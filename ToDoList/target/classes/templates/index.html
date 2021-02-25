@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <script src=/js/jquery-3.4.0.min.js></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <div id="task-form", style="display: none">
+        <form>
+            <h2>Добавление дела</h2>
+            <label>Содержимое дела:</label>
+            <input type="text" name="name" value="">
+            <hr>
+            <button id="save-task">Сохранить задание</button>
+        </form>
+    </div>
+    <div id="update-form", style="display: none">
+        <form>
+            <h2>Обновление дела</h2>
+            <label>ID дела</label>
+            <input type="number" name="id" value="">
+            <label>Содержимое дела:</label>
+            <input type="text" name="name" value="">
+            <hr>
+            <button id="update-task">Обновить задание</button>
+        </form>
+    </div>
+    <div id="delete-form", style="display: none">
+        <form>
+            <h2>Удаление дела</h2>
+            <label>ID дела</label>
+            <input type="number" name="id" value="">
+            <hr>
+            <button id="delete-task">Удалить задание</button>
+        </form>
+    </div>
+<h1>Дела(<span th:text="${tasksCount}">0</span>)</h1>
+<button id="show-add-task-form">Добавить дело</button>
+<button id="show-update-task-form">Обновить дело</button>
+<button id="show-delete-task-form">Удалить дело</button>
+<br><br>
+<div id="task-list">
+    <div th:each="task : ${tasks}">
+        <a class="task-link" th:id="${task.id}" th:text="${task.name}"></a>
+    </div>
+</div>
+</body>
+</html>
